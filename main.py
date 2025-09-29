@@ -9,7 +9,7 @@ if __name__ == "__main__":
     conn = sqlite3.connect(db_path)
 
     root = tk.Tk()
-    root.geometry("700x300")
+    root.geometry("800x300")
     root.resizable(False, False)
     app = GUI(root, conn)
     root.mainloop()
