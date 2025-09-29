@@ -49,13 +49,13 @@ class GUI:
         #табло доходів
         self.income_list_label = tk.Label(master, text="Табло доходів:")
         self.income_list_label.grid(row=0, column=2, padx=5, pady=5)
-        self.income_listbox = tk.Listbox(master, width=30, height=15)
+        self.income_listbox = tk.Listbox(master, width=40, height=15)
         self.income_listbox.grid(row=1, column=2, rowspan=20, padx=20, pady=5)
 
         #табло витрат
         self.expenses_list_label = tk.Label(master, text="Табло витрат:")
         self.expenses_list_label.grid(row=0, column=3, padx=5, pady=5)
-        self.expenses_listbox = tk.Listbox(master,  width=30, height=15)
+        self.expenses_listbox = tk.Listbox(master,  width=40, height=15)
         self.expenses_listbox.grid(row=1, column=3, rowspan=20, padx=0, pady=0)
 
         self.calendar_button = tk.Button(master, text="Календар доходів і витрат", command=self.calendar)
@@ -70,6 +70,8 @@ class GUI:
             self.manager.income_manager.income(amount, source)
             self.update_balance()
             self.lists()
+            self.income_amount_entry.delete(0, tk.END)
+            self.income_source_entry.delete(0, tk.END)
         except ValueError:
             messagebox.showerror("Помилка", "Введіть нормально суму доходу.")
         self.lists()
@@ -87,6 +89,8 @@ class GUI:
             self.manager.expenses_manager.expenses(amount, category)
             self.update_balance()
             self.lists()
+            self.expenses_amount_entry.delete(0, tk.END)
+            self.expenses_category_entry.delete(0, tk.END)
         except ValueError:
             messagebox.showerror("Помилка", "Введіть нормально суму витрат.")
 
